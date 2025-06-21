@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 
 export default function Register() {
@@ -44,6 +45,9 @@ export default function Register() {
   return (
 <>
 <div className='mx-auto sm:w-2/3 bg-white shadow-lg p-12'>
+<Helmet>
+  <title>Register</title>
+</Helmet>
 <h2 className='text-2xl font-bold'>Register</h2>
   <form onSubmit={handleSubmit}>
   <div className='grid md:grid-cols-2 gap-4 py-5 '>

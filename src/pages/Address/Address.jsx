@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 export default function Address() {
   const [isLoadin, setIsLoadin] = useState(false)
   const {cartId} = useParams()
@@ -27,7 +28,7 @@ export default function Address() {
             token: localStorage.getItem("token"),
           },
           params: {
-            url: "http://localhost:5173",
+            url: "https://e-commerce-ashen-nu-43.vercel.app/",
           },
         }
       );
@@ -49,6 +50,9 @@ export default function Address() {
 
   return (
     <div className="mx-auto sm:w-2/3 bg-white shadow-lg p-12">
+       <Helmet>
+                <title>Address</title>
+            </Helmet>
     <h1 className='text-3xl font-bold'>Enter your address</h1>
       <form onSubmit={handleSubmit}>
         <div className='py-5 grid md:grid-cols-2 gap-4'>

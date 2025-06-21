@@ -6,6 +6,7 @@ import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { Button } from "@heroui/react";
 import { Link } from "react-router-dom";
 import img from '../../assets/logo.png';
+import { Helmet } from "react-helmet";
 
 export default function Cart() {
   const [isLoading, setIsLoading] = useState(true);
@@ -115,6 +116,9 @@ export default function Cart() {
   return (
     <>
       <div className="flex justify-between">
+      <Helmet>
+                <title>Cart</title>
+            </Helmet>
         <h1 className="mb-10 text-center text-2xl font-bold">
           Cart Items ({numOfCartItems})
         </h1>

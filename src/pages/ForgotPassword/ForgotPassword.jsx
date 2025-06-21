@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Input } from '@heroui/react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function ForgotPasswordPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -106,6 +107,9 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className='mx-auto sm:w-2/3 bg-white shadow-lg p-12 overflow-hidden'>
+       <Helmet>
+                <title>Forgot Password</title>
+            </Helmet>
       <h2 className='text-2xl font-bold pb-1'>Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         {step === 1 && (

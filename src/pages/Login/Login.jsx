@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/authContext';
+import { Helmet } from 'react-helmet';
 
 
 export default function Login() {
@@ -43,6 +44,9 @@ export default function Login() {
   return (
 <>
 <div className='mx-auto md:w-2/3 bg-white shadow-lg p-12'>
+<Helmet>
+    <title>Login</title>
+</Helmet>
 <h2 className='text-2xl font-bold'>Login Now</h2>
   <form onSubmit={handleSubmit}>
   <div className='grid grid-cols-2 gap-4 py-5 '>

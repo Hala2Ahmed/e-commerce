@@ -7,6 +7,7 @@ import Slider from "react-slick";
 import { Button } from "@heroui/react";
 import { addProductToCart } from "../../Services/CartServices";
 import { WishlistContext } from "../../context/WishlistContext";
+import { Helmet } from "react-helmet";
 
 export default function ProductDetails({isFavourite}) {
   const { id } = useParams();
@@ -44,6 +45,9 @@ export default function ProductDetails({isFavourite}) {
 
   return (
     <div>
+       <Helmet>
+                <title>Product Details</title>
+            </Helmet>
       <div className="flex items-center flex-wrap -mx-4">
         {/* Product Images */}
         <div className="w-full md:w-1/3 px-4 mb-8">

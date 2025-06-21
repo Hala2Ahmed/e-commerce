@@ -1,8 +1,6 @@
 import { Button } from "@heroui/react";
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { addProductToCart } from "../../Services/CartServices";
 import { WishlistContext } from "../../context/WishlistContext";
 

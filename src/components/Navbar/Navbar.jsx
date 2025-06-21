@@ -72,9 +72,9 @@ export default function NavbarComponent() {
     <NavLink to={"/login"}>Login</NavLink>
   </NavbarItem>
   <NavbarItem>
-    <Button color="primary" variant="flat">
-    <NavLink to="/register">Sign Up</NavLink>
-    </Button>
+  <Button color="primary" variant="flat" onPress={() => navigate("/register")}>
+  Sign Up
+      </Button>
   </NavbarItem>
   </>
      }

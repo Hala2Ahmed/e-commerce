@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { WishlistContext } from "../../context/WishlistContext";
-import img from '../../assets/logo.png';
+import img from "../../assets/logo.png";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
 import { Button } from "@heroui/react";
 import { Link } from "react-router-dom";
 import { addProductToCart } from "../../Services/CartServices";
+import { Helmet } from "react-helmet";
 
 const RemoveIcon = ({ onClick }) => (
   <button onClick={onClick} className="text-red-500 hover:text-red-700">
@@ -27,9 +28,8 @@ const RemoveIcon = ({ onClick }) => (
 
 export default function WishList() {
   const [loadingState, setLoadingState] = useState(true);
-  const { wishlist, removeFromWishlist, isLoading } = useContext(WishlistContext);
-
-  
+  const { wishlist, removeFromWishlist, isLoading } =
+    useContext(WishlistContext);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -38,7 +38,11 @@ export default function WishList() {
   if (wishlist.length === 0) {
     return (
       <div className="h-[70vh] flex justify-center items-center">
-        <img className="h-20 w-auto object-cover mb-4" src={img} alt="cart image" />
+        <img
+          className="h-20 w-auto object-cover mb-4"
+          src={img}
+          alt="cart image"
+        />
         <h1 className="text-3xl font-bold text-center">Wishlist is empty</h1>
       </div>
     );
@@ -46,9 +50,15 @@ export default function WishList() {
 
   return (
     <div className="flex flex-col overflow-hidden rounded-lg">
+      <Helmet>
+        <title>Wishlist</title>
+      </Helmet>
       <div className="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-4">
         {wishlist.map((item) => (
-          <div key={item._id} className="relative flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+          <div
+            key={item._id}
+            className="relative flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md"
+          >
             <div className="absolute top-3 right-3 z-10">
               <RemoveIcon onClick={() => removeFromWishlist(item._id)} />
             </div>
@@ -63,7 +73,9 @@ export default function WishList() {
               />
               {item.priceAfterDiscount && (
                 <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-                  {100 - Math.round((item.priceAfterDiscount / item.price) * 100)}% OFF
+                  {100 -
+                    Math.round((item.priceAfterDiscount / item.price) * 100)}
+                  % OFF
                 </span>
               )}
             </Link>
@@ -125,7 +137,8 @@ export default function WishList() {
                               </defs>
                               <path
                                 fill="url(#half-fill)"
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                              />
                             </svg>
                           ) : (
                             <svg
@@ -150,7 +163,7 @@ export default function WishList() {
               </div>
               <Button
                 isLoading={loadingState[item._id] || false} // Use loadingState for this product
-                onPress={() => addProductToCart(item._id,setLoadingState)} // Pass the product ID
+                onPress={() => addProductToCart(item._id, setLoadingState)} // Pass the product ID
                 className="flex items-center justify-center rounded-md bg-slate-900 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
               >
                 <svg

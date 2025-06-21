@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import LoadingScreen from "../../components/LoadingScreen/LoadingScreen";
+import { Helmet } from "react-helmet";
 
 export default function Categories() {
   function getCategories() {
@@ -17,6 +18,9 @@ export default function Categories() {
   }
   return (
     <div className="grid md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 gap-4 py-4">
+       <Helmet>
+                <title>Categories</title>
+            </Helmet>
       {data?.map((category, index) => {
         return (
           <div key={index} className="border rounded-lg overflow-hidden shadow-lg">

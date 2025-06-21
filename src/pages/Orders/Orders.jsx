@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { authContext } from "../../context/authContext";
+import { Helmet } from "react-helmet";
 
 export default function Orders() {
   const { userId } = useContext(authContext);
@@ -16,6 +17,9 @@ export default function Orders() {
   }
   return (
     <div className="py-5 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto overflow-hidden">
+       <Helmet>
+                <title>Orders</title>
+            </Helmet>
       {orders.map((order) => {
         return (
           <div key={order._id} className="flex justify-start item-start space-y-2 flex-col py-5">
